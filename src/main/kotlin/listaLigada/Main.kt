@@ -1,4 +1,4 @@
-import listaLigada.ListaLigada
+package listaLigada
 
 fun main() {
 
