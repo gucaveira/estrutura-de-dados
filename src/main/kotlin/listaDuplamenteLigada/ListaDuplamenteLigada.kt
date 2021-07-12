@@ -15,7 +15,11 @@ class ListaDuplamenteLigada {
     }
 
     fun inserirNoInicio(conteudo: Any) {
-        if (validaQuantidadeIgualZero(conteudo)) return
+        if (quantidade == 0) {
+            inserirNaListaVazia(conteudo)
+            return
+        }
+
         val celula = Celula(conteudo)
         celula.proxima = inicio
         inicio?.anterior = celula
@@ -24,7 +28,10 @@ class ListaDuplamenteLigada {
     }
 
     fun inserirNoFim(conteudo: Any) {
-        if (validaQuantidadeIgualZero(conteudo)) return
+        if (quantidade == 0) {
+            inserirNaListaVazia(conteudo)
+            return
+        }
         val celula = Celula(conteudo)
         celula.anterior = fim
         fim?.proxima = celula
@@ -32,21 +39,14 @@ class ListaDuplamenteLigada {
         quantidade++
     }
 
-    private fun validaQuantidadeIgualZero(conteudo: Any): Boolean {
-        return if (quantidade == 0) {
-            inserirNaListaVazia(conteudo)
-            true
-        } else {
-            false
-        }
-    }
-
     fun inserir(posicao: Int, conteudo: Any) {
-        if (validaQuantidadeIgualZero(conteudo)) {
+        if (posicao == 0) {
+            inserirNoInicio(conteudo)
             return
         }
         if (posicao == quantidade) {
             inserirNoFim(conteudo)
+            return
         }
 
         val esquerda = getCelula(posicao - 1)
@@ -67,12 +67,13 @@ class ListaDuplamenteLigada {
         val metade = quantidade.div(2)
 
         if (posicao < metade) {
-            for (i in 0..posicao) {
+            for (i in 0 until posicao) {
                 atual = atual?.proxima
             }
+
         } else {
             atual = fim
-            for (i in quantidade downTo posicao) {
+            for (i in quantidade downTo posicao + 1 step 1) {
                 atual = atual?.anterior
             }
         }
@@ -83,7 +84,7 @@ class ListaDuplamenteLigada {
         return if (posicao in 0 until quantidade) {
             true
         } else {
-            throw IndexOutOfBoundsException("Posição inválida. Essa posição não existe na lista $posicao")
+            throw IndexOutOfBoundsException("Posição inválida. Essa posição não existe na lista ${posicao + 1}")
         }
     }
 
