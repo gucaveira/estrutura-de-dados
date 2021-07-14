@@ -16,7 +16,7 @@ fun main() {
 
     val lista = ListaDuplamenteLigada()
 
-    lista.inserir(0,loja00)
+    lista.inserir(0, loja00)
     lista.inserir(1, loja01)
     lista.inserir(2, loja02)
     lista.inserir(3, loja03)
@@ -25,15 +25,21 @@ fun main() {
     lista.inserir(6, loja06)
     lista.inserir(7, loja07)
     lista.inserir(8, loja08)
-    lista.inserir(7, loja09)
+    lista.inserir(9, loja09)
 
+    situacao(lista)
+    println("---------------------------------------")
+    println(lista.removerDoInicio())
+    println("---------------------------------------")
     situacao(lista)
 
 }
 
 private fun situacao(lista: ListaDuplamenteLigada) {
-    println("Quantidade ${lista.quantidade}")
     println(lista.imprime())
+    println("________________________________")
+    println("Quantidade ${lista.quantidade}")
+    println("________________________________")
 }
 
 data class Loja(val mercado: String, val rua: String)

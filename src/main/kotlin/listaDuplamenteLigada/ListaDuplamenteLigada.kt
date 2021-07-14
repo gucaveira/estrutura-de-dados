@@ -88,6 +88,26 @@ class ListaDuplamenteLigada {
         }
     }
 
+    private fun removerUltimo(): Any? {
+        val remover = inicio
+        inicio = null
+        fim = null
+        quantidade--
+        return remover?.conteudo
+    }
+
+    fun removerDoInicio(): Any? {
+        if (quantidade == 1) {
+            return removerUltimo()
+        }
+        val removido = inicio
+        inicio = inicio?.proxima
+        inicio?.anterior = null
+        removido?.proxima = null
+        quantidade--
+        return removido?.conteudo
+    }
+
     fun imprime() {
         var atual = inicio
 
