@@ -28,11 +28,14 @@ fun main() {
     lista.inserir(9, loja09)
 
     situacao(lista)
-    println("---------------------------------------")
-    println(lista.removerDoInicio())
-    println("---------------------------------------")
-    situacao(lista)
+    mostarItemRemovido(lista.removerDoInicio())
 
+}
+
+private fun mostarItemRemovido(item: Any?) {
+    println("---------------------------------------")
+    println(item)
+    println("---------------------------------------")
 }
 
 private fun situacao(lista: ListaDuplamenteLigada) {
