@@ -73,7 +73,7 @@ class ListaDuplamenteLigada {
 
         } else {
             atual = fim
-            for (i in quantidade downTo posicao + 1 step 1) {
+            for (i in quantidade downTo posicao + 2) {
                 atual = atual?.anterior
             }
         }
@@ -107,6 +107,40 @@ class ListaDuplamenteLigada {
         quantidade--
         return removido?.conteudo
     }
+
+    fun removerNoFim(): Any? {
+        if (quantidade == 1) {
+            return removerUltimo()
+        }
+        val removido = fim
+        fim = removido?.anterior
+        fim?.proxima = null
+        removido?.anterior = null
+        quantidade--
+        return removido
+    }
+
+    fun remover(posicao: Int): Any? {
+        if (posicao == 0) {
+            return removerDoInicio()
+        }
+        if (posicao == quantidade - 1) {
+            return removerNoFim()
+        }
+
+        val removido = getCelula(posicao)
+        val esquerda = removido?.anterior
+        val direita = removido?.proxima
+
+        removido?.proxima = null
+        removido?.anterior = null
+
+        esquerda?.proxima = direita
+        direita?.anterior = esquerda
+        quantidade--
+        return removido
+    }
+
 
     fun imprime() {
         var atual = inicio

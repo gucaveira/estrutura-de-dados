@@ -27,8 +27,8 @@ fun main() {
     lista.inserir(8, loja08)
     lista.inserir(9, loja09)
 
+    mostarItemRemovido(lista.remover(7))
     situacao(lista)
-    mostarItemRemovido(lista.removerDoInicio())
 
 }
 
