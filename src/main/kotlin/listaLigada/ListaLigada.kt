@@ -1,9 +1,11 @@
 package listaLigada
 
 class ListaLigada(
-    private var inicio: Celula? = null,
     var quantidade: Int = 0
 ) {
+
+    var inicio: Celula? = null
+        private set
 
     fun imprime() {
         var celulaAtual = inicio
